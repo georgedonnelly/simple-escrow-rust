@@ -9,7 +9,7 @@ skip-lint = false
 seeds = true
 
 [programs.localnet]
-simple_escrow = "71axVYtoJyNVYVtJzVVcKEJLETtvenx2yJ89eMP1a2PK"
+simple_escrow = "4PonUp1nPEzDPnRMPjTqufLT3f37QuBJGk1CVnsTXx7x"
 
 [registry]
 url = "https://api.apr.dev"
@@ -20,4 +20,4 @@ wallet = "./keys/devnet/program-keypair.json"
 
 [scripts]
 # test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
-test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.cjs"
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.cjs" 

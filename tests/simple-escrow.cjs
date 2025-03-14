@@ -1,6 +1,5 @@
 const anchor = require("@coral-xyz/anchor");
 const { Program } = anchor;
-const { SimpleEscrow } = require("../target/types/simple_escrow");
 const { Keypair, PublicKey, LAMPORTS_PER_SOL } = require("@solana/web3.js");
 
 describe("simple-escrow", () => {
@@ -8,13 +7,21 @@ describe("simple-escrow", () => {
   const provider = anchor.getProvider();
   const program = anchor.workspace.SimpleEscrow;
   const seller = Keypair.generate();
+  const buyer = Keypair.generate();
 
   it("Creates an escrow", async () => {
     const escrowId = new anchor.BN(1);
-    const amount = new anchor.BN(1000000);
+    const tradeId = new anchor.BN(2);
+    const amount = new anchor.BN(1000000); // 1 USDC
+    const sequential = true;
+    const sequentialEscrowAddress = Keypair.generate().publicKey;
 
     const [escrowPda] = PublicKey.findProgramAddressSync(
-      [Buffer.from("escrow"), escrowId.toArrayLike(Buffer, "le", 8)],
+      [
+        Buffer.from("escrow"),
+        escrowId.toArrayLike(Buffer, "le", 8),
+        tradeId.toArrayLike(Buffer, "le", 8),
+      ],
       program.programId
     );
 
@@ -26,9 +33,10 @@ describe("simple-escrow", () => {
 
     try {
       const tx = await program.methods
-        .createEscrow(escrowId, amount)
+        .createEscrow(escrowId, tradeId, amount, sequential, sequentialEscrowAddress)
         .accounts({
           seller: seller.publicKey,
+          buyer: buyer.publicKey,
           escrow: escrowPda,
           systemProgram: anchor.web3.SystemProgram.programId,
         })
