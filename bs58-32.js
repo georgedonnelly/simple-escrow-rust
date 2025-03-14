@@ -7,7 +7,6 @@ const secretKey = Uint8Array.from(keypair); // 64 bytes, last 32 are pubkey
 const pubkeyBytes = secretKey.slice(32); // Last 32 bytes are the pubkey
 console.log(pubkeyBytes);
 
-
 const pubkey = "GGrXhNVxUZXaA2uMopsa5q23aPmoNvQF14uxqo8qENUr";
 
 // Decode the base58 string to a byte array
