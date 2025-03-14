@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "types": ["mocha", "node"],
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "strict": true,
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "target": "ES2020",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "lib": ["ES2020"]
+  },
+  "include": ["tests/**/*.ts", "tests/simple-escrow.cjs"]
+}

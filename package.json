@@ -1,0 +1,15 @@
+{
+  "type": "commonjs",
+  "scripts": {
+    "test": "anchor test"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.31.0"
+  },
+  "devDependencies": {
+    "mocha": "^10.0.0",
+    "ts-mocha": "^10.0.0",
+    "@types/mocha": "^10.0.0",
+    "typescript": "^5.0.0"
+  }
+}
